@@ -30,6 +30,12 @@ Contacts
 
 [Michele Rastelli][13]
 
+[Sergio De Bei][14]
+
+[Giuseppe Tazzi][15]
+
+
+
 
 [1]: http://www.busonair.eu
 
@@ -56,3 +62,7 @@ Contacts
 [12]: http://www.di.univaq.it/flammini/
 
 [13]: mailto:rashtao@gmail.com
+
+[14]: http://sergiodebei.github.io/
+
+[15]: http://frenz.github.io/

@@ -1,23 +1,31 @@
 package boa.server.test;
 
-import boa.server.domain.*;
+import java.util.ArrayList;
+
 import org.neo4j.graphdb.GraphDatabaseService;
+import org.neo4j.graphdb.Transaction;
+
+import boa.server.domain.*;
+import boa.server.domain.json.Coordinate;
+
 
 
 public class ImportTest {
 
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
-        DbConnection.createEmbeddedDbConnection();
-        importTest();
-    }
+	private static GraphDatabaseService db;
 
-    public static void importTest() {
-        System.out.print("\n\n ---- IMPORT TEST ---");
-        GraphDatabaseService db = DbConnection.getDb();
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		DbConnection.createEmbeddedDbConnection();
+		importTest();
+	}
 
+	public static void importTest(){
+    	System.out.print("\n\n ---- IMPORT TEST ---");
+		db = DbConnection.getDb();
+		
 //		Transaction tx = DbConnection.getDb().beginTx();
 //		try{
 //			int id = 1051;
@@ -27,8 +35,9 @@ public class ImportTest {
 //		}finally{
 //			tx.finish();			
 //		}   
-
-
+		
+		
+		
 //		Route addded = null;
 //		Transaction tx = DbConnection.getDb().beginTx();
 //		try{
@@ -41,32 +50,34 @@ public class ImportTest {
 //		}finally{
 //			tx.finish();			
 //		}   
+		
+		
 
 
-        int stationsCount = 0;
-        int routesCount = 0;
-        int runsCount = 0;
-        int stopsCount = 0;
-
-
-        for (Station s : Stations.getStations().getAll()) {
-            ++stationsCount;
-        }
-
-        for (Route route : Routes.getRoutes().getAll()) {
-            ++routesCount;
+		int stationsCount = 0;
+		int routesCount = 0;
+		int runsCount = 0;
+		int stopsCount = 0;
+		
+		
+        for(Station s : Stations.getStations().getAll()){
+        	++stationsCount;
+        }		
+		
+        for(Route route : Routes.getRoutes().getAll()){
+        	++routesCount;
 //        	System.out.print("\n\n" + route);
-            for (Run r : route.getAllRuns()) {
-                ++runsCount;
+            for(Run r : route.getAllRuns()){
+            	++runsCount;
 //            	System.out.print("\n\n" + r);
-                for (Stop s : r.getAllStops()) {
-                    ++stopsCount;
+                for(Stop s : r.getAllStops()){
+                	++stopsCount;
 //                	System.out.print("\n\n" + s);
                 }
-
+                
             }
         }
-
+        
         System.out.println("");
         System.out.println(stationsCount);
         System.out.println(routesCount);
@@ -76,16 +87,16 @@ public class ImportTest {
         routesCount = Routes.getRoutes().getAll().size();
         runsCount = Runs.getRuns().getAll().size();
         stopsCount = Stops.getStops().getAll().size();
-
+        
         System.out.println("");
         System.out.println(routesCount);
         System.out.println(runsCount);
         System.out.println(stopsCount);
 
+        
+    	System.out.print("\n\n ---- end IMPORT TEST ---");
 
-        System.out.print("\n\n ---- end IMPORT TEST ---");
-
-        DbConnection.turnoff();
-    }
-
+		DbConnection.turnoff();
+	}		
+	
 }

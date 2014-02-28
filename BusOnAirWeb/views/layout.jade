@@ -1,0 +1,115 @@
+doctype html
+html
+  include inc/header
+  body.overflow-hidden
+    #wrapper.sidebar-mini
+      #top-nav.fixed.skin-6
+        a.brand(href='#')
+          span BusOnAir
+          span.text-toggle
+          //
+            brand
+        button#sidebarToggle.navbar-toggle.pull-left(type='button')
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+      aside.fixed.skin-6
+        .sidebar-inner.scrollable-sidebar
+          .size-toggle
+            a#sizeToggle.btn.btn-sm
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+          .search-block
+            .input-group
+              input.form-control.input-sm(type='text', placeholder='search here...')
+              span.input-group-btn
+                button.btn.btn-default.btn-sm(type='button')
+                  i.fa.fa-search
+          .main-menu
+            ul
+              li.openable
+                a(href='#')
+                  span.menu-icon
+                    i.fa.fa-file-text.fa-lg
+                  span.text
+                    | Trip planner
+                  span.menu-hover
+                ul.submenu
+                  li
+                    .search-block
+                      .input-group
+                        span.input-group-btn
+                          button.btn.btn-default.btn-sm(type='button') A
+                        input.form-control.input-sm(type='text', placeholder='search here...')
+                      .input-group
+                        span.input-group-btn
+                          button.btn.btn-default.btn-sm(type='button') B
+                        input.form-control.input-sm(type='text', placeholder='search here...')
+                      .form-group
+                        | on
+                        select#stato.form-control(style='width: 64%;')
+                          option lunedi
+                          option martedi
+                          option mercoledi
+                          option giovedi
+                          option venerdi
+                          option sabato
+                        button.btn.btn-primary(type='submit', style='margin-top: 5px;') Go
+              li.openable
+                a(href='#')
+                  span.menu-icon
+                    i.fa.fa-tag.fa-lg
+                  span.text
+                    | Bus Routes
+                  span.menu-hover
+                ul.submenu
+                  li
+                    .search-block
+                      input.form-control.input-sm(type='text', placeholder='search here...')
+                  li
+                    a(href='')
+                      span.submenu-label M11 Terminal
+                  li
+                    a(href='')
+                      span.submenu-label M6 Paganica
+              li.openable
+                a(href='#')
+                  span.menu-icon
+                    i.fa.fa-clock-o.fa-lg
+                  span.text
+                    | Information
+                  span.menu-hover
+                ul.submenu
+                  li
+                    .search-block
+                      p About Us
+      block append content
+
+  include inc/scripts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+

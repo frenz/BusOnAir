@@ -1,0 +1,212 @@
+Feb 26, 2014 3:56:55 PM org.neo4j.server.logging.Logger log
+INFO: Starting Neo Server on port [7474] with [20] threads available
+Feb 26, 2014 3:56:55 PM org.neo4j.server.logging.Logger log
+INFO: Enabling HTTPS on port [7473]
+Feb 26, 2014 3:56:55 PM org.neo4j.server.logging.Logger log
+INFO: Using database at /home/sergio/Code/BusOnAir-master/neo4j/data/graph.db
+Feb 26, 2014 3:56:59 PM org.neo4j.server.logging.Logger log
+INFO: Mounted discovery module at [/]
+Feb 26, 2014 3:56:59 PM org.neo4j.server.logging.Logger log
+INFO: Loaded server plugin "CypherPlugin"
+Feb 26, 2014 3:56:59 PM org.neo4j.server.logging.Logger log
+INFO: Loaded server plugin "SpatialPlugin"
+Feb 26, 2014 3:56:59 PM org.neo4j.server.logging.Logger log
+INFO: Loaded server plugin "GremlinPlugin"
+Feb 26, 2014 3:56:59 PM org.neo4j.server.logging.Logger log
+INFO: Mounted REST API at [/db/data/]
+Feb 26, 2014 3:56:59 PM org.neo4j.server.logging.Logger log
+INFO: Mounted management API at [/db/manage/]
+Feb 26, 2014 3:56:59 PM org.neo4j.server.logging.Logger log
+INFO: Mounted third-party JAX-RS package [boa.server] at [/plugin]
+Feb 26, 2014 3:56:59 PM org.neo4j.server.logging.Logger log
+INFO: Mounted webadmin at [/webadmin]
+Feb 26, 2014 3:56:59 PM org.neo4j.server.logging.Logger log
+INFO: Mounting static content at [/webadmin] from [webadmin-html]
+Feb 26, 2014 3:56:59 PM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Scanning for root resource and provider classes in the packages:
+  boa.server
+Feb 26, 2014 3:56:59 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Root resource classes found:
+  class boa.server.plugin.runs.RunsResource
+  class boa.server.webapp.config.PopulateCacheResource
+  class boa.server.plugin.routes.RoutesResource
+  class boa.server.webapp.directionsearch.DirectionsSearch
+  class boa.server.plugin.directions.DirectionsResource
+  class boa.server.plugin.stations.StationsResource
+  class boa.server.webapp.routesearch.RouteSearchResource
+  class boa.server.plugin.stops.StopsResource
+  class boa.server.plugin.backend.BackEndResource
+Feb 26, 2014 3:56:59 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Provider classes found:
+  class boa.server.webapp.config.JAXBContextResolver
+Feb 26, 2014 3:56:59 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.9 09/02/2011 11:17 AM'
+Feb 26, 2014 3:57:00 PM com.sun.jersey.spi.inject.Errors processErrorMessages
+WARNING: The following warnings have been detected with resource and/or provider classes:
+  WARNING: A sub-resource method, public javax.ws.rs.core.Response boa.server.plugin.directions.DirectionsResource.getDirections(java.lang.Double,java.lang.Double,java.lang.Double,java.lang.Double,java.lang.Integer,java.lang.Integer,java.lang.Integer,java.lang.String,java.lang.Integer) throws java.io.IOException, with URI template, "/", is treated as a resource method
+  WARNING: A sub-resource method, public javax.ws.rs.core.Response boa.server.webapp.routesearch.RouteSearchResource.routeSearch(java.lang.Integer) throws java.io.IOException, with URI template, "/", is treated as a resource method
+  WARNING: A sub-resource method, public javax.ws.rs.core.Response boa.server.webapp.config.PopulateCacheResource.populateCache(), with URI template, "/", is treated as a resource method
+  WARNING: A sub-resource method, public javax.ws.rs.core.Response boa.server.webapp.directionsearch.DirectionsSearch.directions(double,double,double,double,double) throws java.io.IOException, with URI template, "/", is treated as a resource method
+Feb 26, 2014 3:57:00 PM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Scanning for root resource and provider classes in the packages:
+  org.neo4j.server.webadmin.rest
+Feb 26, 2014 3:57:00 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Root resource classes found:
+  class org.neo4j.server.webadmin.rest.JmxService
+  class org.neo4j.server.webadmin.rest.RootService
+  class org.neo4j.server.webadmin.rest.ConsoleService
+  class org.neo4j.server.webadmin.rest.MonitorService
+Feb 26, 2014 3:57:00 PM com.sun.jersey.api.core.ScanningResourceConfig init
+INFO: No provider classes found.
+Feb 26, 2014 3:57:00 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.9 09/02/2011 11:17 AM'
+Feb 26, 2014 3:57:00 PM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Scanning for root resource and provider classes in the packages:
+  org.neo4j.server.rest.web
+Feb 26, 2014 3:57:00 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Root resource classes found:
+  class org.neo4j.server.rest.web.CypherService
+  class org.neo4j.server.rest.web.RestfulGraphDatabase
+  class org.neo4j.server.rest.web.ResourcesService
+  class org.neo4j.server.rest.web.BatchOperationService
+  class org.neo4j.server.rest.web.DatabaseMetadataService
+  class org.neo4j.server.rest.web.ExtensionService
+Feb 26, 2014 3:57:00 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Provider classes found:
+  class org.neo4j.server.rest.web.DatabaseBlockedExceptionMapper
+Feb 26, 2014 3:57:00 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.9 09/02/2011 11:17 AM'
+Feb 26, 2014 3:57:01 PM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Scanning for root resource and provider classes in the packages:
+  org.neo4j.server.rest.discovery
+Feb 26, 2014 3:57:01 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Root resource classes found:
+  class org.neo4j.server.rest.discovery.DiscoveryService
+Feb 26, 2014 3:57:01 PM com.sun.jersey.api.core.ScanningResourceConfig init
+INFO: No provider classes found.
+Feb 26, 2014 3:57:01 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.9 09/02/2011 11:17 AM'
+Feb 26, 2014 3:57:01 PM org.neo4j.server.logging.Logger log
+INFO: adding statistic-filter to /webadmin
+Feb 26, 2014 3:57:01 PM org.neo4j.server.logging.Logger log
+INFO: adding statistic-filter to /plugin
+Feb 26, 2014 3:57:01 PM org.neo4j.server.logging.Logger log
+INFO: adding statistic-filter to /db/manage
+Feb 26, 2014 3:57:01 PM org.neo4j.server.logging.Logger log
+INFO: adding statistic-filter to /db/data
+Feb 26, 2014 3:57:01 PM org.neo4j.server.logging.Logger log
+INFO: adding statistic-filter to /
+Feb 26, 2014 3:57:01 PM org.neo4j.server.logging.Logger log
+INFO: Server started on [http://localhost:7474/]
+Feb 26, 2014 4:16:07 PM java.util.prefs.FileSystemPreferences$6 run
+WARNING: Prefs file removed in background /root/.java/.userPrefs/org/codehaus/groovy/tools/shell/prefs.xml
+Feb 26, 2014 5:51:49 PM org.neo4j.server.logging.Logger log
+INFO: Neo4j Server shutdown initiated by kill signal
+Feb 26, 2014 5:51:49 PM org.neo4j.server.logging.Logger log
+INFO: stopping filter
+Feb 27, 2014 6:43:14 PM org.neo4j.server.logging.Logger log
+INFO: Starting Neo Server on port [7474] with [20] threads available
+Feb 27, 2014 6:43:14 PM org.neo4j.server.logging.Logger log
+INFO: Enabling HTTPS on port [7473]
+Feb 27, 2014 6:43:16 PM org.neo4j.server.logging.Logger log
+INFO: Using database at /home/sergio/Code/BusOnAir-master/neo4j/data/graph.db
+Feb 27, 2014 6:43:26 PM org.neo4j.server.logging.Logger log
+INFO: Mounted discovery module at [/]
+Feb 27, 2014 6:43:26 PM org.neo4j.server.logging.Logger log
+INFO: Loaded server plugin "CypherPlugin"
+Feb 27, 2014 6:43:26 PM org.neo4j.server.logging.Logger log
+INFO: Loaded server plugin "SpatialPlugin"
+Feb 27, 2014 6:43:26 PM org.neo4j.server.logging.Logger log
+INFO: Loaded server plugin "GremlinPlugin"
+Feb 27, 2014 6:43:26 PM org.neo4j.server.logging.Logger log
+INFO: Mounted REST API at [/db/data/]
+Feb 27, 2014 6:43:26 PM org.neo4j.server.logging.Logger log
+INFO: Mounted management API at [/db/manage/]
+Feb 27, 2014 6:43:26 PM org.neo4j.server.logging.Logger log
+INFO: Mounted third-party JAX-RS package [boa.server] at [/plugin]
+Feb 27, 2014 6:43:26 PM org.neo4j.server.logging.Logger log
+INFO: Mounted webadmin at [/webadmin]
+Feb 27, 2014 6:43:26 PM org.neo4j.server.logging.Logger log
+INFO: Mounting static content at [/webadmin] from [webadmin-html]
+Feb 27, 2014 6:43:27 PM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Scanning for root resource and provider classes in the packages:
+  boa.server
+Feb 27, 2014 6:43:27 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Root resource classes found:
+  class boa.server.plugin.runs.RunsResource
+  class boa.server.plugin.routes.RoutesResource
+  class boa.server.webapp.config.PopulateCacheResource
+  class boa.server.plugin.backend.BackEndResource
+  class boa.server.webapp.directionsearch.DirectionsSearch
+  class boa.server.plugin.stations.StationsResource
+  class boa.server.plugin.stops.StopsResource
+  class boa.server.plugin.directions.DirectionsResource
+  class boa.server.webapp.routesearch.RouteSearchResource
+Feb 27, 2014 6:43:27 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Provider classes found:
+  class boa.server.webapp.config.JAXBContextResolver
+Feb 27, 2014 6:43:27 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.9 09/02/2011 11:17 AM'
+Feb 27, 2014 6:43:28 PM com.sun.jersey.spi.inject.Errors processErrorMessages
+WARNING: The following warnings have been detected with resource and/or provider classes:
+  WARNING: A sub-resource method, public javax.ws.rs.core.Response boa.server.plugin.directions.DirectionsResource.getDirections(java.lang.Double,java.lang.Double,java.lang.Double,java.lang.Double,java.lang.Integer,java.lang.Integer,java.lang.Integer,java.lang.String,java.lang.Integer) throws java.io.IOException, with URI template, "/", is treated as a resource method
+  WARNING: A sub-resource method, public javax.ws.rs.core.Response boa.server.webapp.routesearch.RouteSearchResource.routeSearch(java.lang.Integer) throws java.io.IOException, with URI template, "/", is treated as a resource method
+  WARNING: A sub-resource method, public javax.ws.rs.core.Response boa.server.webapp.config.PopulateCacheResource.populateCache(), with URI template, "/", is treated as a resource method
+  WARNING: A sub-resource method, public javax.ws.rs.core.Response boa.server.webapp.directionsearch.DirectionsSearch.directions(double,double,double,double,double) throws java.io.IOException, with URI template, "/", is treated as a resource method
+Feb 27, 2014 6:43:28 PM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Scanning for root resource and provider classes in the packages:
+  org.neo4j.server.webadmin.rest
+Feb 27, 2014 6:43:29 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Root resource classes found:
+  class org.neo4j.server.webadmin.rest.MonitorService
+  class org.neo4j.server.webadmin.rest.ConsoleService
+  class org.neo4j.server.webadmin.rest.RootService
+  class org.neo4j.server.webadmin.rest.JmxService
+Feb 27, 2014 6:43:29 PM com.sun.jersey.api.core.ScanningResourceConfig init
+INFO: No provider classes found.
+Feb 27, 2014 6:43:29 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.9 09/02/2011 11:17 AM'
+Feb 27, 2014 6:43:29 PM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Scanning for root resource and provider classes in the packages:
+  org.neo4j.server.rest.web
+Feb 27, 2014 6:43:29 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Root resource classes found:
+  class org.neo4j.server.rest.web.ExtensionService
+  class org.neo4j.server.rest.web.DatabaseMetadataService
+  class org.neo4j.server.rest.web.CypherService
+  class org.neo4j.server.rest.web.ResourcesService
+  class org.neo4j.server.rest.web.BatchOperationService
+  class org.neo4j.server.rest.web.RestfulGraphDatabase
+Feb 27, 2014 6:43:29 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Provider classes found:
+  class org.neo4j.server.rest.web.DatabaseBlockedExceptionMapper
+Feb 27, 2014 6:43:29 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.9 09/02/2011 11:17 AM'
+Feb 27, 2014 6:43:29 PM com.sun.jersey.api.core.PackagesResourceConfig init
+INFO: Scanning for root resource and provider classes in the packages:
+  org.neo4j.server.rest.discovery
+Feb 27, 2014 6:43:29 PM com.sun.jersey.api.core.ScanningResourceConfig logClasses
+INFO: Root resource classes found:
+  class org.neo4j.server.rest.discovery.DiscoveryService
+Feb 27, 2014 6:43:29 PM com.sun.jersey.api.core.ScanningResourceConfig init
+INFO: No provider classes found.
+Feb 27, 2014 6:43:29 PM com.sun.jersey.server.impl.application.WebApplicationImpl _initiate
+INFO: Initiating Jersey application, version 'Jersey: 1.9 09/02/2011 11:17 AM'
+Feb 27, 2014 6:43:30 PM org.neo4j.server.logging.Logger log
+INFO: adding statistic-filter to /webadmin
+Feb 27, 2014 6:43:30 PM org.neo4j.server.logging.Logger log
+INFO: adding statistic-filter to /plugin
+Feb 27, 2014 6:43:30 PM org.neo4j.server.logging.Logger log
+INFO: adding statistic-filter to /db/manage
+Feb 27, 2014 6:43:30 PM org.neo4j.server.logging.Logger log
+INFO: adding statistic-filter to /db/data
+Feb 27, 2014 6:43:30 PM org.neo4j.server.logging.Logger log
+INFO: adding statistic-filter to /
+Feb 27, 2014 6:43:30 PM org.neo4j.server.logging.Logger log
+INFO: Server started on [http://localhost:7474/]
+Feb 27, 2014 7:02:59 PM java.util.prefs.FileSystemPreferences$6 run
+WARNING: Prefs file removed in background /root/.java/.userPrefs/org/codehaus/groovy/tools/shell/prefs.xml
+Feb 27, 2014 8:16:31 PM org.neo4j.server.logging.Logger log
+INFO: Neo4j Server shutdown initiated by kill signal
+Feb 27, 2014 8:16:31 PM org.neo4j.server.logging.Logger log
+INFO: stopping filter

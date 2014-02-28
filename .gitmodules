@@ -1,0 +1,3 @@
+[submodule "BusOnAirWeb"]
+	path = BusOnAirWeb
+	url = git@github.com:sergiodebei/BusOnAirWeb.git

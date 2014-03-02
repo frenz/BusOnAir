@@ -35,12 +35,7 @@ while true; do
         then 
             PID=`cat $NEO4J_PIDFILE`
         else 
-            if ps -ax | grep -v grep | grep  [n]eo4j | wc -l > /dev/null
-            then
-                echo "Neo4j is running"
-                ps -ax | grep -v grep | grep [n]eo4j | awk '{print $1}' | xargs sudo kill -9
-                echo "WNeo4j is OFF"
-            fi
+            PID=0
         fi
         
         if [ ! -d $NEO4J_HOME ]
@@ -59,19 +54,19 @@ while true; do
             sudo $NEO4J_HOME/bin/neo4j stop
         fi
         sudo rm -r $NEO4J_HOME/data/graph.db/*\
-            $NEO4J_HOME/data/log/*\
-            $NEO4J_HOME/data/keystore\
-            $NEO4J_HOME/data/rrd\
-            $NEO4J_HOME/plugins/*
+        sudo rm -r $NEO4J_HOME/data/log/*\
+        sudo rm -r $NEO4J_HOME/data/keystore\
+        sudo rm -r $NEO4J_HOME/data/rrd\
+        sudo rm -r $NEO4J_HOME/plugins/*
  
         echo "Copying DB & Plugins to NEO4J_HOME"
-        sudo chmod 777 $NEO4J_DATA -R
-        sudo chmod 777 $NEO4J_HOME -R
+        sudo chmod -R 755 $NEO4J_DATA
+        sudo chmod -R 755 $NEO4J_HOME
         cp -a $BOA_ROOT/neo4jData/data/ $NEO4J_HOME/data/
         cp -a $BOA_SERVER/target/plugins/* $NEO4J_HOME/plugins/
         echo "org.neo4j.server.thirdparty_jaxrs_classes=boa.server=/plugin" >>  $NEO4J_HOME/conf/neo4j-server.properties
         echo "cache_type=strong" >>  $NEO4J_HOME/conf/neo4j.properties
-        sudo chmod 777 $NEO4J_HOME -R
+        sudo chmod -R 755 $NEO4J_HOME
         sudo $NEO4J_HOME/bin/neo4j start
         pause 'Press [Enter] key to continue...'
         ;;

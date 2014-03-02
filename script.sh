@@ -10,7 +10,7 @@ NEO4J_HOME="$BOA_ROOT/neo4j"
 NEO4J_DATA="$BOA_ROOT/neo4jData"
 NEO4J_VERSION="1.8.M03"
 export MAVEN_OPTS=-Xmx512m 
-NEO4J_PIDFILE="$NEO4J_HOME/neo4j-service.pid"
+# NEO4J_PIDFILE="$NEO4J_HOME/data/neo4j-service.pid" genera pid non esatti
 
 while true; do
     clear
@@ -18,9 +18,11 @@ while true; do
     echo "
         1   Compila BoaServer
         2   Inizializza neo4j
-        3   Importa i dati
-        4   Avvia il BoaWebServer
-        5   Stop BoaWebServer
+        3   Avvia neo4j
+        4   Stop neo4j
+        5   Importa i dati
+        6   Avvia il BoaWebServer
+        7   Stop BoaWebServer
     "
     echo -n "Fai la tua scelta: "
     read INPUT # Read user input and assign it to variable INPUT
@@ -32,12 +34,12 @@ while true; do
         pause 'Press [Enter] key to continue...'
         ;;
     2)  
-        if [ -f $NEO4J_PIDFILE ]
-        then 
-            PID=`cat $NEO4J_PIDFILE`
-        else 
-            PID=0
-        fi
+        # if [ -f $NEO4J_PIDFILE ]              #funzione da usare nel momento in cui il pid diventa un bravo pid
+        # then 
+        #     PID=`cat $NEO4J_PIDFILE`
+        # else 
+        #     PID=0
+        # fi
         
         if [ ! -d $NEO4J_HOME ]
         then
@@ -59,15 +61,16 @@ while true; do
             fi
         fi
 
+        PID=$(ps ax | grep -v grep | grep  neo4j | awk '{print $1}')
         if ps -p $PID > /dev/null
         then
             echo "$PID is running"
             sudo $NEO4J_HOME/bin/neo4j stop
         fi
-        sudo rm -r $NEO4J_HOME/data/graph.db/*\
-        sudo rm -r $NEO4J_HOME/data/log/*\
-        sudo rm -r $NEO4J_HOME/data/keystore\
-        sudo rm -r $NEO4J_HOME/data/rrd\
+        sudo rm -r $NEO4J_HOME/data/graph.db/*
+        sudo rm -r $NEO4J_HOME/data/log/*
+        sudo rm -r $NEO4J_HOME/data/keystore
+        sudo rm -r $NEO4J_HOME/data/rrd
         sudo rm -r $NEO4J_HOME/plugins/*
  
         echo "Copying DB & Plugins to NEO4J_HOME"
@@ -78,17 +81,37 @@ while true; do
         echo "org.neo4j.server.thirdparty_jaxrs_classes=boa.server=/plugin" >>  $NEO4J_HOME/conf/neo4j-server.properties
         echo "cache_type=strong" >>  $NEO4J_HOME/conf/neo4j.properties
         sudo chmod -R 755 $NEO4J_HOME
-        sudo $NEO4J_HOME/bin/neo4j start
         pause 'Press [Enter] key to continue...'
         ;;
 
     3)  
+        PID=$(ps ax | grep -v grep | grep  neo4j | awk '{print $1}')
+        if ps -p $PID > /dev/null
+        then
+            echo "$PID is running"
+            sudo $NEO4J_HOME/bin/neo4j stop
+        fi
+        sudo $NEO4J_HOME/bin/neo4j start
+        pause 'Press [Enter] key to continue...'
+        ;;
+
+    4)  
+        PID=$(ps ax | grep -v grep | grep  neo4j | awk '{print $1}')
+        if ps -p $PID > /dev/null
+        then
+            echo "$PID is running"
+            sudo $NEO4J_HOME/bin/neo4j stop
+        fi
+        pause 'Press [Enter] key to continue...'
+        ;;
+
+    5)  
         cd ./import
         ./testImporter.sh
         cd $BOA_ROOT
         pause 'Press [Enter] key to continue...'
         ;;
-    4) 
+    6) 
         cd $BOA_WEB
         
         if ps -ax | grep -v grep | grep  [a]pp.js | wc -l > /dev/null
@@ -106,7 +129,7 @@ while true; do
         pause 'Press [Enter] key to continue...'
        ;;
 
-    5)
+    7)
         cd $BOA_WEB
         if ps -ax | grep -v grep | grep  [a]pp.js | wc -l > /dev/null
         then

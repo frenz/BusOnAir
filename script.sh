@@ -5,6 +5,7 @@ function pause(){
 BOA_ROOT=$PWD
 BOA_SERVER="$BOA_ROOT/BusOnAirServer"
 BOA_WEB="$BOA_ROOT/BusOnAirWeb"
+BOA_TAR="$BOA_ROOT/Tar"
 NEO4J_HOME="$BOA_ROOT/neo4j"
 NEO4J_DATA="$BOA_ROOT/neo4jData"
 NEO4J_VERSION="1.8.M03"
@@ -40,12 +41,22 @@ while true; do
         
         if [ ! -d $NEO4J_HOME ]
         then
-            curl http://dist.neo4j.org/neo4j-community-$NEO4J_VERSION-unix.tar.gz | tar xvzf -
+            if [ -f $BOA_TAR/neo4j-community-$NEO4J_VERSION-unix.tar.gz ]
+            then
+                tar xvzf $BOA_TAR/neo4j-community-$NEO4J_VERSION-unix.tar.gz
+            else
+                curl http://dist.neo4j.org/neo4j-community-$NEO4J_VERSION-unix.tar.gz | tar xvzf -
+            fi
             mv neo4j-community-$NEO4J_VERSION neo4j
         fi
         if [ ! -d $NEO4J_DATA ]
         then
-            curl https://dl.dropboxusercontent.com/s/yifbg9ycucjgwg0/neo4jData.tar.gz | tar xvzf -
+            if [ -f $BOA_TAR/neo4jData.tar.gz ]
+            then
+                tar xvzf $BOA_TAR/neo4jData.tar.gz
+            else
+                curl https://dl.dropboxusercontent.com/s/yifbg9ycucjgwg0/neo4jData.tar.gz | tar xvzf -
+            fi
         fi
 
         if ps -p $PID > /dev/null

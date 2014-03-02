@@ -6,7 +6,7 @@ BOA_ROOT=$PWD
 BOA_SERVER="$BOA_ROOT/BusOnAirServer"
 BOA_WEB="$BOA_ROOT/BusOnAirWeb"
 NEO4J_HOME="$BOA_ROOT/neo4j"
-$NEO4J_DATA="$BOA_ROOT/neo4jData"
+NEO4J_DATA="$BOA_ROOT/neo4jData"
 NEO4J_VERSION="1.8.M03"
 export MAVEN_OPTS=-Xmx512m 
 NEO4J_PIDFILE="$NEO4J_HOME/neo4j-service.pid"
@@ -35,9 +35,14 @@ while true; do
         then 
             PID=`cat $NEO4J_PIDFILE`
         else 
-            PID=0
+            if ps -ax | grep -v grep | grep  [n]eo4j | wc -l > /dev/null
+            then
+                echo "Neo4j is running"
+                ps -ax | grep -v grep | grep [n]eo4j | awk '{print $1}' | xargs sudo kill -9
+                echo "WNeo4j is OFF"
+            fi
         fi
- 
+        
         if [ ! -d $NEO4J_HOME ]
         then
             curl http://dist.neo4j.org/neo4j-community-$NEO4J_VERSION-unix.tar.gz | tar xvzf -
@@ -60,6 +65,8 @@ while true; do
             $NEO4J_HOME/plugins/*
  
         echo "Copying DB & Plugins to NEO4J_HOME"
+        sudo chmod 777 $NEO4J_DATA -R
+        sudo chmod 777 $NEO4J_HOME -R
         cp -a $BOA_ROOT/neo4jData/data/ $NEO4J_HOME/data/
         cp -a $BOA_SERVER/target/plugins/* $NEO4J_HOME/plugins/
         echo "org.neo4j.server.thirdparty_jaxrs_classes=boa.server=/plugin" >>  $NEO4J_HOME/conf/neo4j-server.properties
@@ -78,11 +85,11 @@ while true; do
     4) 
         cd $BOA_WEB
         
-        if ps -x | grep  [a]pp.js | wc -l > /dev/null
+        if ps -ax | grep -v grep | grep  [a]pp.js | wc -l > /dev/null
         then
-          echo "Web Server is running"
-          ps -x | grep -V | grep [a]pp.js | xargs kill -9
-          echo "Web Server install OFF"
+            echo "Web Server is running"
+            ps -ax | grep -v grep | grep  [a]pp.js | awk '{print $1}' | xargs kill -9 > /dev/null
+            echo "Web Server install OFF"
         else
           echo "Web Server is not running"
         fi
@@ -95,11 +102,11 @@ while true; do
 
     5)
         cd $BOA_WEB
-        if ps -x | grep  [a]pp.js | wc -l > /dev/null
+        if ps -ax | grep -v grep | grep  [a]pp.js | wc -l > /dev/null
         then
-          echo "Web Server is running"
-          ps -x | grep -V | grep [a]pp.js | xargs kill -9
-          echo "Web Server install OFF"
+            echo "Web Server is running"
+            ps -ax | grep -v grep | grep  [a]pp.js | awk '{print $1}' | xargs kill -9 > /dev/null
+            echo "Web Server install OFF"
         else
           echo "Web Server is not running"
         fi

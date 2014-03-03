@@ -15,6 +15,7 @@ export MAVEN_OPTS=-Xmx512m
 while true; do
     clear
     cd $BOA_ROOT
+    PID=0
     echo "
         1   Compila BoaServer
         2   Inizializza neo4j
@@ -62,7 +63,7 @@ while true; do
         fi
 
         PID=$(ps ax | grep -v grep | grep  neo4j | awk '{print $1}')
-        if ps -p $PID > /dev/null
+        if [ -n "$PID" ]
         then
             echo "$PID is running"
             sudo $NEO4J_HOME/bin/neo4j stop
@@ -78,6 +79,7 @@ while true; do
         sudo chmod -R 755 $NEO4J_HOME
         cp -a $BOA_ROOT/neo4jData/data/ $NEO4J_HOME/data/
         cp -a $BOA_SERVER/target/plugins/* $NEO4J_HOME/plugins/
+        echo "org.neo4j.server.webserver.address=0.0.0.0" >>  $NEO4J_HOME/conf/neo4j-server.properties
         echo "org.neo4j.server.thirdparty_jaxrs_classes=boa.server=/plugin" >>  $NEO4J_HOME/conf/neo4j-server.properties
         echo "cache_type=strong" >>  $NEO4J_HOME/conf/neo4j.properties
         sudo chmod -R 755 $NEO4J_HOME
@@ -86,7 +88,7 @@ while true; do
 
     3)  
         PID=$(ps ax | grep -v grep | grep  neo4j | awk '{print $1}')
-        if ps -p $PID > /dev/null
+        if [ -n "$PID" ]
         then
             echo "$PID is running"
             sudo $NEO4J_HOME/bin/neo4j stop
@@ -97,7 +99,7 @@ while true; do
 
     4)  
         PID=$(ps ax | grep -v grep | grep  neo4j | awk '{print $1}')
-        if ps -p $PID > /dev/null
+        if [ -n "$PID" ]
         then
             echo "$PID is running"
             sudo $NEO4J_HOME/bin/neo4j stop

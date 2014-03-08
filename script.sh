@@ -116,8 +116,7 @@ while true; do
     6) 
         cd $BOA_WEB
         
-        if ps -ax | grep -v grep | grep  [a]pp.js | wc -l > /dev/null
-        then
+        if (( $(ps ax | grep -v grep | grep  [a]pp.js | wc -l) > 0 )); then
             echo "Web Server is running"
             ps -ax | grep -v grep | grep  [a]pp.js | awk '{print $1}' | xargs kill -9 > /dev/null
             echo "Web Server install OFF"
@@ -133,8 +132,8 @@ while true; do
 
     7)
         cd $BOA_WEB
-        if ps -ax | grep -v grep | grep  [a]pp.js | wc -l > /dev/null
-        then
+
+        if (( $(ps ax | grep -v grep | grep  [a]pp.js | wc -l) > 0 )); then
             echo "Web Server is running"
             ps -ax | grep -v grep | grep  [a]pp.js | awk '{print $1}' | xargs kill -9 > /dev/null
             echo "Web Server install OFF"

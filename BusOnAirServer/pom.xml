@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>boa</groupId>
-	<artifactId>TransportAquila</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>boa</groupId>
+    <artifactId>TransportAquila</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    
+    <description>L Aquila Public Transport Route Planner
+    </description>
+    <url>busonair.eu</url>
+    <organization/>
 
 	<dependencies>
 		<dependency>
@@ -17,20 +23,18 @@
 			<groupId>org.neo4j.app</groupId>
 			<artifactId>neo4j-server</artifactId>
 			<version>1.8.M03</version>
-		</dependency>     
-		
+		</dependency>
+
 		<dependency>
-		  <groupId>org.neo4j</groupId>
-		  <artifactId>neo4j-spatial</artifactId>
-		  <version>0.9-SNAPSHOT</version>
-		  <scope>system</scope>
-		  <systemPath>${basedir}/lib/neo4j-spatial-0.9-SNAPSHOT.jar</systemPath>
+			<groupId>org.neo4j</groupId>
+			<artifactId>neo4j-spatial</artifactId>
+			<version>0.9</version>
 		</dependency>
 		
 		<dependency>
 		  <groupId>org.neo4j</groupId>
 		  <artifactId>neo4j-graph-collections</artifactId>
-		  <version>0.5</version>
+		  <version>0.4</version>
 		</dependency>
       
 		<dependency>
@@ -40,10 +44,16 @@
         </dependency>
 
         <dependency>
-            <groupId>org.geotools</groupId>
-            <artifactId>gt-shapefile</artifactId>
-            <version>2.6.3</version>
-        </dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-main</artifactId>
+			<version>2.6.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-shapefile</artifactId>
+			<version>2.6.3</version>
+		</dependency>
 
         <dependency>
             <groupId>com.sun.jersey</groupId>
@@ -95,21 +105,21 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
-  				<executions>
-   					<execution>
+				<executions>
+					<execution>
 						<id>default-cli</id>
 						<goals>
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${basedir}/target/plugins</outputDirectory>
-							<overWriteReleases>false</overWriteReleases>
-							<overWriteSnapshots>false</overWriteSnapshots>
-							<overWriteIfNewer>true</overWriteIfNewer>
-							<excludeArtifactIds>neo4j-server</excludeArtifactIds>
-						</configuration>
+ 							<outputDirectory>${basedir}/target/plugins</outputDirectory>
+ 							<overWriteReleases>false</overWriteReleases>
+ 							<overWriteSnapshots>false</overWriteSnapshots>
+ 							<overWriteIfNewer>true</overWriteIfNewer>
+ 							<excludeArtifactIds>neo4j-server</excludeArtifactIds>
+ 						</configuration>
 					</execution>
-				      </executions> 
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -123,15 +133,18 @@
 			<id>osgeo</id>
 			<url>http://download.osgeo.org/webdav/geotools/</url>
 		</repository>
-		<repository>
-			<id>neo4j-public-repository</id>
-			<url>http://m2.neo4j.org </url>
-		</repository>
-
+		 <repository>
+            <id>neo4j-public-snapshot-repository</id>
+            <name>Neo4J Public Snapshot Repository</name>
+            <url>http://m2.neo4j.org/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>neo4j-public-release-repository</id>
+            <name>Neo4J Public Release Repository</name>
+            <url>http://m2.neo4j.org/releases</url>
+        </repository>
 	</repositories>
-	
-	
-	
-	
-    <name>TransportAquila</name>
 </project>

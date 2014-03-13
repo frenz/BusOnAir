@@ -66,13 +66,26 @@ while true; do
         if [ -n "$PID" ]
         then
             echo "$PID is running"
-            sudo $NEO4J_HOME/bin/neo4j stop
+             if [ -f $NEO4J_HOME/bin/neo4j ]
+            then 
+                sudo $NEO4J_HOME/bin/neo4j stop
+            else
+                sudo kill -9 $PID
+            fi
         fi
-        sudo rm -r $NEO4J_HOME/data/graph.db/*
-        sudo rm -r $NEO4J_HOME/data/log/*
-        sudo rm -r $NEO4J_HOME/data/keystore
-        sudo rm -r $NEO4J_HOME/data/rrd
-        sudo rm -r $NEO4J_HOME/plugins/*
+
+        
+        if [ -f $NEO4J_HOME/data/keystore ]
+        
+        then 
+            sudo rm -r $NEO4J_HOME/data/graph.db/*
+            sudo rm -r $NEO4J_HOME/data/log/*
+            sudo rm -r $NEO4J_HOME/data/keystore
+            sudo rm -r $NEO4J_HOME/data/rrd
+            sudo rm -r $NEO4J_HOME/plugins/*
+        fi
+        
+        
  
         echo "Copying DB & Plugins to NEO4J_HOME"
         sudo chmod -R 755 $NEO4J_DATA
@@ -91,7 +104,12 @@ while true; do
         if [ -n "$PID" ]
         then
             echo "$PID is running"
-            sudo $NEO4J_HOME/bin/neo4j stop
+            if [ -f $NEO4J_HOME/bin/neo4j ]
+            then 
+                sudo $NEO4J_HOME/bin/neo4j stop
+            else
+                sudo kill -9 $PID
+            fi
         fi
         sudo $NEO4J_HOME/bin/neo4j start
         pause 'Press [Enter] key to continue...'
